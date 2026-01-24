@@ -48,7 +48,7 @@ const AgencyPage = () => {
   ];
 
   return (
-    <div className="bg-[#FDFCFM] font-sans text-slate-900 selection:bg-purple-200 overflow-x-hidden">
+    <div className="bg-[#FDFCFM] mt-5 font-sans text-slate-900 selection:bg-purple-200 overflow-x-hidden">
       {/* --- GLOBAL OVERLAYS --- */}
       <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       
@@ -147,85 +147,87 @@ const AgencyPage = () => {
       <Pricing />
 
       {/* --- ANALYTICS DASHBOARD SECTION --- */}
-      <section className="mx-4 md:mx-10 my-16 py-20 md:py-40 bg-[#090A0F] rounded-[3rem] md:rounded-[6rem] relative overflow-hidden border border-white/5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.15),transparent_70%)]" />
-        
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-20 md:gap-32 relative z-10">
-          
-          {/* Dashboard Visual */}
-          <div className="w-full lg:w-1/2 order-2 lg:order-1">
-            <div className="bg-[#0F1117] backdrop-blur-3xl rounded-[3rem] md:rounded-[5rem] p-8 md:p-16 border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] relative">
-              <div className="flex flex-col sm:flex-row justify-between items-start gap-8 mb-16">
-                <div className="space-y-3">
-                  <h4 className="text-white text-3xl md:text-5xl font-[1000] tracking-tighter italic">Global Scale</h4>
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <p className="text-slate-500 font-black text-[10px] md:text-xs uppercase tracking-[0.3em]">Live Growth Metrics</p>
-                  </div>
-                </div>
-                <div className="text-left sm:text-right">
-                  <p className="text-5xl md:text-7xl font-[1000] text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-500">+{revenue}%</p>
-                  <p className="text-[10px] text-indigo-400 font-black uppercase tracking-widest mt-2">Conversion Delta</p>
-                </div>
-              </div>
-
-              {/* Dynamic Bar Chart */}
-              <div className="relative h-48 md:h-80 w-full flex items-end justify-between gap-1.5 md:gap-3 px-1 overflow-hidden">
-                {[50, 70, 45, 90, 60, 100, 80, 55, 85, 40, 75, 95, 65, 80].map((h, i) => (
-                  <div 
-                    key={i} 
-                    className="relative w-full bg-gradient-to-t from-purple-600 via-indigo-500 to-blue-400 rounded-full transition-all duration-1000"
-                    style={{ 
-                      height: `${h}%`, 
-                      animation: `infinitewave 4s ease-in-out infinite alternate`,
-                      animationDelay: `${i * 0.1}s` 
-                    }}
-                  />
-                ))}
-              </div>
-
-              {/* Status Indicators */}
-              <div className="mt-16 grid grid-cols-3 gap-4">
-                {['Security', 'Velocity', 'Stability'].map((item, i) => (
-                  <div key={i} className="bg-white/5 p-5 rounded-3xl border border-white/5 text-center group hover:bg-white/10 transition-colors">
-                    <p className="text-slate-500 text-[9px] md:text-[10px] font-black uppercase mb-3 tracking-widest">{item}</p>
-                    <div className="h-1 bg-slate-800 rounded-full overflow-hidden">
-                      <div className="h-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]" style={{ width: `${85 + (i * 4)}%` }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
+      <section className="mx-2 md:mx-10 my-8 md:my-16 py-10 md:py-40 bg-[#090A0F] rounded-[2rem] md:rounded-[6rem] relative overflow-hidden border border-white/5">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.15),transparent_70%)]" />
+  
+  <div className="max-w-7xl mx-auto px-4 md:px-12 flex flex-col lg:flex-row items-center gap-10 md:gap-32 relative z-10">
+    
+    {/* Dashboard Visual - Compact on Mobile */}
+    <div className="w-full lg:w-1/2 order-2 lg:order-1 scale-[0.9] md:scale-100 origin-top">
+      <div className="bg-[#0F1117] backdrop-blur-3xl rounded-[2rem] md:rounded-[5rem] p-5 md:p-16 border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] relative">
+        <div className="flex flex-row justify-between items-start gap-4 mb-6 md:mb-16">
+          <div className="space-y-1 md:space-y-3">
+            <h4 className="text-white text-xl md:text-5xl font-[1000] tracking-tighter italic">Global Scale</h4>
+            <div className="flex items-center gap-2">
+              <div className="flex h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <p className="text-slate-500 font-black text-[8px] md:text-xs uppercase tracking-[0.2em]">Live Metrics</p>
             </div>
           </div>
-
-          {/* Text Content */}
-          <div className="w-full lg:w-1/2 text-center lg:text-left order-1 lg:order-2">
-            <h2 className="text-5xl md:text-[8rem] font-[1000] text-white leading-[0.85] tracking-[ -0.05em] mb-10">
-              Modern <br/><span className="italic font-serif text-slate-500">Engines.</span>
-            </h2>
-            <div className="space-y-10 max-w-md mx-auto lg:mx-0">
-              <div className="flex gap-6 md:gap-10 items-start text-left group">
-                <div className="w-14 h-14 md:w-20 md:h-20 bg-purple-500/10 rounded-3xl flex items-center justify-center shrink-0 border border-purple-500/20 group-hover:bg-purple-500/20 transition-all duration-500">
-                  <Cpu size={32} className="text-purple-400" />
-                </div>
-                <div>
-                  <h4 className="text-white font-black text-2xl mb-3 tracking-tight">Full Code Ownership</h4>
-                  <p className="text-slate-400 text-base md:text-lg leading-relaxed font-medium">We build your assets, not ours. Complete IP transfer and clean documentation as standard.</p>
-                </div>
-              </div>
-              <div className="flex gap-6 md:gap-10 items-start text-left group">
-                <div className="w-14 h-14 md:w-20 md:h-20 bg-blue-500/10 rounded-3xl flex items-center justify-center shrink-0 border border-blue-500/20 group-hover:bg-blue-500/20 transition-all duration-500">
-                  <ShieldCheck size={32} className="text-blue-400" />
-                </div>
-                <div>
-                  <h4 className="text-white font-black text-2xl mb-3 tracking-tight">Security-First Dev</h4>
-                  <p className="text-slate-400 text-base md:text-lg leading-relaxed font-medium">SOC2-ready protocols and end-to-end encryption integrated into every serverless architecture.</p>
-                </div>
-              </div>
-            </div>
+          <div className="text-right">
+            <p className="text-3xl md:text-7xl font-[1000] text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-500">+{revenue}%</p>
+            <p className="text-[8px] md:text-[10px] text-indigo-400 font-black uppercase tracking-widest mt-1">Delta</p>
           </div>
         </div>
-      </section>
+
+        {/* Dynamic Bar Chart - Micro height on mobile */}
+        <div className="relative h-24 md:h-80 w-full flex items-end justify-between gap-1 md:gap-3 px-1 overflow-hidden">
+          {[50, 70, 45, 90, 60, 100, 80, 55, 85, 40, 75, 95, 65, 80].map((h, i) => (
+            <div 
+              key={i} 
+              className="relative w-full bg-gradient-to-t from-purple-600 via-indigo-500 to-blue-400 rounded-full transition-all duration-1000"
+              style={{ 
+                height: `${h}%`, 
+                animation: `infinitewave 4s ease-in-out infinite alternate`,
+                animationDelay: `${i * 0.1}s` 
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Status Indicators - Compact on Mobile */}
+        <div className="mt-6 md:mt-16 grid grid-cols-3 gap-2 md:gap-4">
+          {['Security', 'Velocity', 'Stability'].map((item, i) => (
+            <div key={i} className="bg-white/5 p-2 md:p-5 rounded-xl md:rounded-3xl border border-white/5 text-center">
+              <p className="text-slate-500 text-[7px] md:text-[10px] font-black uppercase mb-1.5 md:mb-3 tracking-tighter md:tracking-widest">{item}</p>
+              <div className="h-0.5 md:h-1 bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]" style={{ width: `${85 + (i * 4)}%` }} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* Text Content - Responsive sizes */}
+    <div className="w-full lg:w-1/2 text-center lg:text-left order-1 lg:order-2">
+      <h2 className="text-4xl md:text-[8rem] font-[1000] text-white leading-[0.9] tracking-tighter mb-6 md:mb-10 px-4 md:px-0">
+        Modern <br className="hidden md:block"/><span className="italic font-serif text-slate-500">Engines.</span>
+      </h2>
+      <div className="space-y-6 md:space-y-10 max-w-md mx-auto lg:mx-0 px-2">
+        <div className="flex gap-4 md:gap-10 items-start text-left group">
+          <div className="w-10 h-10 md:w-20 md:h-20 bg-purple-500/10 rounded-xl md:rounded-3xl flex items-center justify-center shrink-0 border border-purple-500/20">
+            <Cpu size={20} className="text-purple-400 md:hidden" />
+            <Cpu size={32} className="text-purple-400 hidden md:block" />
+          </div>
+          <div>
+            <h4 className="text-white font-black text-lg md:text-2xl mb-1 md:mb-3 tracking-tight">Full Code Ownership</h4>
+            <p className="text-slate-400 text-xs md:text-lg leading-relaxed font-medium">Own your future with clean, documented IP transfer.</p>
+          </div>
+        </div>
+        <div className="flex gap-4 md:gap-10 items-start text-left group">
+          <div className="w-10 h-10 md:w-20 md:h-20 bg-blue-500/10 rounded-xl md:rounded-3xl flex items-center justify-center shrink-0 border border-blue-500/20">
+            <ShieldCheck size={20} className="text-blue-400 md:hidden" />
+            <ShieldCheck size={32} className="text-blue-400 hidden md:block" />
+          </div>
+          <div>
+            <h4 className="text-white font-black text-lg md:text-2xl mb-1 md:mb-3 tracking-tight">Security-First Dev</h4>
+            <p className="text-slate-400 text-xs md:text-lg leading-relaxed font-medium">SOC2-ready protocols integrated as standard.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* --- TESTIMONIALS --- */}
       <Testimonials />
