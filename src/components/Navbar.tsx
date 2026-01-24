@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar: React.FC = () => {
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 ">
+    <header className="fixed top-2 left-0 right-0 z-50 flex justify-center px-4 ">
       <nav className="flex items-center justify-between w-full max-w-[95%] md:max-w-5xl h-[72px] bg-white border border-gray-100 rounded-full px-4 md:px-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-md bg-opacity-90">
         
         {/* Logo Section */}

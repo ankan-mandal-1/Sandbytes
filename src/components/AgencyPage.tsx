@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { 
   Globe, Zap, Smartphone, ArrowUpRight, TrendingUp, 
   CheckCircle2, Activity, Cpu, Settings, ChevronRight, 
-  Terminal, BarChart3, ShieldCheck, Layers, MousePointer2 
+  Terminal, BarChart3, ShieldCheck, Layers, MousePointer2,
+  MessageCircle,
+  Phone,
 } from 'lucide-react';
 import Pricing from './Pricing';
 import Testimonials from './Testimonials';
@@ -47,8 +49,14 @@ const AgencyPage = () => {
     }
   ];
 
+ const phoneNumber = "917031139797";
+
+  function setShowModal(arg0: boolean) {
+    throw new Error('Function not implemented.');
+  }
+
   return (
-    <div className="bg-[#FDFCFM] mt-5 font-sans text-slate-900 selection:bg-purple-200 overflow-x-hidden">
+    <div className="bg-[#FDFCFM] font-sans text-slate-900 selection:bg-purple-200 overflow-x-hidden">
       {/* --- GLOBAL OVERLAYS --- */}
       <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       
@@ -78,14 +86,44 @@ const AgencyPage = () => {
             Architecting high-performance digital products for ambitious brands. We deliver code, clarity, and scalability.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto animate-fade-in-delay">
-            <button className="w-full sm:w-auto bg-slate-900 text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-purple-600 transition-all shadow-2xl hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 group">
-              Start Project <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </button>
-            <button className="w-full sm:w-auto bg-white border border-slate-200 text-slate-900 px-10 py-5 rounded-2xl font-black text-lg hover:bg-slate-50 transition-all shadow-lg active:scale-95">
-              View Capabilities
-            </button>
-          </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-lg mx-auto sm:max-w-none animate-fade-in-delay px-4 sm:px-0">
+    
+    {/* PRIMARY ACTION: Direct Call / Modal Trigger */}
+    <button 
+      onClick={() => {
+        // If mobile, trigger direct dial; otherwise, open form
+        if (window.innerWidth < 768) {
+          window.location.href = `tel:+${phoneNumber}`;
+        } else {
+          setShowModal(true);
+        }
+      }}
+      className="w-full sm:w-auto bg-slate-900 text-white px-8 py-5 rounded-[1.5rem] font-[1000] text-lg hover:bg-purple-600 transition-all shadow-2xl hover:shadow-purple-500/25 active:scale-95 flex items-center justify-center gap-3 group"
+    >
+      <div className="bg-purple-500/20 p-2 rounded-lg group-hover:bg-white group-hover:text-purple-600 transition-colors">
+        <Phone size={20} className="group-hover:rotate-12 transition-transform" />
+      </div>
+      <span className="whitespace-nowrap">Free Consultation Call</span>
+    </button>
+
+    {/* SECONDARY ACTION: WhatsApp with "Online" Indicator */}
+    <a 
+      href={`https://wa.me/${phoneNumber}?text=Hi%20Sandbyte!%20I'd%20like%20to%20discuss%20a%20new%20project.`}
+      target="_blank"
+      rel="noreferrer"
+      className="w-full sm:w-auto bg-white border-2 border-slate-100 text-slate-900 px-8 py-5 rounded-[1.5rem] font-[1000] text-lg hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-700 transition-all shadow-lg active:scale-95 flex items-center justify-center gap-3 group relative"
+    >
+      <div className="relative">
+        <MessageCircle size={22} className="text-emerald-500 group-hover:scale-110 transition-transform" />
+        {/* Live Pulse Dot */}
+        <span className="absolute -top-1 -right-1 flex h-3 w-3">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 border-2 border-white"></span>
+        </span>
+      </div>
+      WhatsApp Us
+    </a>
+  </div>
         </div>
 
         {/* --- BRAND MARQUEE --- */}
