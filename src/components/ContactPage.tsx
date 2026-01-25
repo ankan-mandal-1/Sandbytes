@@ -10,11 +10,11 @@ export const ContactPage: React.FC = () => {
           <p className="text-zinc-500 text-lg">Have a project in mind? We'd love to hear about it. Choose the way you want to connect.</p>
           
           <div className="space-y-4">
-            <a href="mailto:hello@sandbyte.studio" className="flex items-center gap-4 p-6 bg-white rounded-3xl border border-black/5 hover:scale-105 transition-transform">
+            <a href="mailto:hello@sandbyte.site" className="flex items-center gap-4 p-6 bg-white rounded-3xl border border-black/5 hover:scale-105 transition-transform">
               <div className="bg-blue-50 p-3 rounded-2xl text-blue-600"><Mail size={24}/></div>
               <div>
                 <div className="text-xs font-bold text-zinc-400 uppercase tracking-widest">Email Us</div>
-                <div className="text-lg font-bold">hello@sandbyte.studio</div>
+                <div className="text-lg font-bold">hello@sandbyte.site</div>
               </div>
             </a>
             <a href="tel:+917031139797" className="flex items-center gap-4 p-6 bg-white rounded-3xl border border-black/5 hover:scale-105 transition-transform">

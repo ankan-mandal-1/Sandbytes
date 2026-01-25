@@ -15,13 +15,13 @@ export const AboutPage: React.FC = () => {
               Building the <span className="italic text-zinc-400">future</span>, one pixel at a time.
             </h1>
             <p className="text-xl text-zinc-500 leading-relaxed">
-              Sandbyte Studio is a lean, mean, design and development machine based in India, helping global startups ship world-class products.
+              Sandbyte site is a lean, mean, design and development machine based in India, helping global startups ship world-class products.
             </p>
           </header>
 
           <div className="grid md:grid-cols-2 gap-12 text-zinc-600 leading-relaxed">
             <p>
-              We founded Sandbyte because we were tired of "standard" agency culture—slow timelines, bloated costs, and fragmented communication. We decided to build a studio that moves at the speed of a startup.
+              We founded Sandbyte because we were tired of "standard" agency culture—slow timelines, bloated costs, and fragmented communication. We decided to build a site that moves at the speed of a startup.
             </p>
             <p>
               Our philosophy is simple: obsess over quality, ignore the fluff, and focus on metrics that matter—like helping our clients raise over 50 Lakhs in funding through high-converting design.

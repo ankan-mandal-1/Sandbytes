@@ -24,7 +24,7 @@ export const Footer = () => {
             </a>
             
             <a 
-              href="https://wa.me/917031139797?text=Hi%20Ankan,%20I'm%20interested%20in%20working%20with%20Sandbyte%20Studio!" 
+              href="https://wa.me/917031139797?text=Hi%20Ankan,%20I'm%20interested%20in%20working%20with%20Sandbyte%20site!" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
@@ -45,7 +45,7 @@ export const Footer = () => {
             <p className="text-zinc-400 max-w-[200px] mx-auto md:mx-0">
               High-growth design and dev partner for modern startups.
             </p>
-            <p className="text-zinc-300">© 2026 Sandbyte Studio</p>
+            <p className="text-zinc-300">© 2026 Sandbyte site</p>
           </div>
 
           {/* Links Column */}
@@ -65,8 +65,8 @@ export const Footer = () => {
           {/* Contact Column */}
           <div className="text-center md:text-right space-y-2">
             <p className="font-bold text-zinc-400 uppercase tracking-widest text-[10px]">Get in touch</p>
-            <a href="mailto:hello@sandbyte.studio" className="text-lg font-bold text-zinc-900 hover:underline decoration-zinc-300 underline-offset-4">
-              hello@sandbyte.studio
+            <a href="mailto:hello@sandbyte.site" className="text-lg font-bold text-zinc-900 hover:underline decoration-zinc-300 underline-offset-4">
+              hello@sandbyte.site
             </a>
             <p className="text-zinc-400">+91 70311 39797</p>
           </div>

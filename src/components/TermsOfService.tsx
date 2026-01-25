@@ -16,12 +16,12 @@ export const TermsOfService: React.FC = () => {
           <div className="space-y-12 text-zinc-600 leading-relaxed">
             <section>
               <h2 className="text-2xl font-bold text-zinc-900 mb-4">1. Engagement & Services</h2>
-              <p>Sandbyte Studio provides professional design and development services. By engaging with our studio, you agree to provide necessary assets and feedback in a timely manner to ensure project timelines are met.</p>
+              <p>Sandbyte site provides professional design and development services. By engaging with our site, you agree to provide necessary assets and feedback in a timely manner to ensure project timelines are met.</p>
             </section>
 
             <section>
               <h2 className="text-2xl font-bold text-zinc-900 mb-4">2. Intellectual Property</h2>
-              <p>Upon receipt of final payment, full ownership of the design assets and code created during the project is transferred to the client. Sandbyte Studio retains the right to display the work in our portfolio and marketing materials unless otherwise agreed upon in a non-disclosure agreement (NDA).</p>
+              <p>Upon receipt of final payment, full ownership of the design assets and code created during the project is transferred to the client. Sandbyte site retains the right to display the work in our portfolio and marketing materials unless otherwise agreed upon in a non-disclosure agreement (NDA).</p>
             </section>
 
             <section>

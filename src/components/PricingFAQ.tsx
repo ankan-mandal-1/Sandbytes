@@ -14,7 +14,7 @@ import { Check, ChevronDown, MessageCircle, Calendar } from 'lucide-react';
 const FAQS = [
   {
     q: "Why wouldn't I just hire a full-time designer?",
-    a: "A senior designer now costs over ₹1.5L/month, plus benefits. Aside from the cost, you might not always have enough work to keep them busy. With SandByte, you get studio-quality work at a fraction of the cost, and you can scale your projects as needed without the overhead of a full-time hire."
+    a: "A senior designer now costs over ₹1.5L/month, plus benefits. Aside from the cost, you might not always have enough work to keep them busy. With SandByte, you get site-quality work at a fraction of the cost, and you can scale your projects as needed without the overhead of a full-time hire."
   },
   {
     q: "How fast will I receive my designs?",

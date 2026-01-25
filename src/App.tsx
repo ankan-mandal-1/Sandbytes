@@ -86,7 +86,7 @@ const Navigation: React.FC<{ isMenuOpen: boolean; setIsMenuOpen: (val: boolean) 
             <div className="space-y-6">
               <div className="space-y-1">
                 <p className="text-zinc-400 font-bold text-[10px] uppercase tracking-widest">Email Us</p>
-                <a href="mailto:hello@sandbyte.studio" className="text-xl font-bold block underline underline-offset-4 decoration-zinc-300">hello@sandbyte.studio</a>
+                <a href="mailto:hello@sandbyte.site" className="text-xl font-bold block underline underline-offset-4 decoration-zinc-300">hello@sandbyte.site</a>
               </div>
             </div>
           </motion.div>

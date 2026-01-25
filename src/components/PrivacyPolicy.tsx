@@ -28,7 +28,7 @@ export const PrivacyPolicy = () => (
 export const Terms = () => (
   <LegalWrapper title="Terms and Conditions">
     <h2 className="text-xl font-bold text-zinc-900">1. Acceptance</h2>
-    <p>By accessing Sandbyte Studio, you agree to comply with these terms. If you do not agree, please do not use our services.</p>
+    <p>By accessing Sandbyte site, you agree to comply with these terms. If you do not agree, please do not use our services.</p>
     <h2 className="text-xl font-bold text-zinc-900">2. Service Scope</h2>
     <p>We provide design and development services. The specific scope of work for each client is outlined in individual project agreements.</p>
   </LegalWrapper>
@@ -37,7 +37,7 @@ export const Terms = () => (
 // Disclaimer Component
 export const Disclaimer = () => (
   <LegalWrapper title="Disclaimer">
-    <p>The information provided on this website is for general informational purposes only. While we strive for accuracy, Sandbyte Studio makes no guarantees regarding the results of any service provided.</p>
+    <p>The information provided on this website is for general informational purposes only. While we strive for accuracy, Sandbyte site makes no guarantees regarding the results of any service provided.</p>
     <p>Success in business depends on various factors beyond our control, and we do not guarantee specific financial returns or funding success.</p>
   </LegalWrapper>
 );
