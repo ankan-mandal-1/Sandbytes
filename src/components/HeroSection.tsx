@@ -45,7 +45,7 @@ export const HeroSection: React.FC = () => {
   const infiniteProjects = useMemo(() => [...PROJECTS, ...PROJECTS, ...PROJECTS], []);
 
   return (
-    <section className="mt-10 relative min-h-screen flex flex-col items-center pt-16 md:pt-10 overflow-hidden bg-[#F4F4F4] selection:bg-zinc-900 selection:text-white">
+    <section className="mt-20 relative min-h-screen flex flex-col items-center pt-16 md:pt-10 overflow-hidden bg-[#F4F4F4] selection:bg-zinc-900 selection:text-white">
       
       {/* --- TOP FLOATING BADGE --- */}
       <motion.div 
@@ -97,14 +97,28 @@ export const HeroSection: React.FC = () => {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6"
         >
-          <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#1A1A1A] text-white px-10 py-5 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl group">
-            <Calendar size={20} className="group-hover:rotate-12 transition-transform" />
-            Book Intro Call
-          </button>
-          <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white border border-black/10 px-10 py-5 rounded-full font-bold hover:bg-zinc-50 active:scale-95 transition-all shadow-sm">
-            <Mail size={20} className="text-blue-500" />
-            Send Message
-          </button>
+          <a 
+  href="https://cal.com/kael-man/30min" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="w-full sm:w-auto block"
+>
+  <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#1A1A1A] text-white px-10 py-5 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl group">
+    <Calendar size={20} className="group-hover:rotate-12 transition-transform" />
+    Book Intro Call
+  </button>
+</a>
+          <a 
+  href="https://wa.me/917031139797?text=Hi%20Ankan,%20I'm%20interested%20in%20working%20with%20Sandbyte%20Studio!" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="w-full sm:w-auto block"
+>
+  <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white border border-black/10 px-10 py-5 rounded-full font-bold hover:bg-zinc-50 active:scale-95 transition-all shadow-sm">
+    <Mail size={20} className="text-[#25D366]" /> {/* Changed icon color to WhatsApp Green */}
+    Send Message
+  </button>
+</a>
         </motion.div>
       </motion.div>
 
