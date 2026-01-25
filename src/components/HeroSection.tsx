@@ -1,17 +1,7 @@
 import React, { useMemo } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 import { Mail, Calendar, ArrowUpRight } from 'lucide-react';
 
-/**
- * HERO SECTION COMPONENT
- * * Features:
- * 1. Responsive typography (Fluid scaling)
- * 2. Infinite Marquee (Left-to-Right)
- * 3. Mobile-optimized card dimensions
- * 4. Scroll-based parallax and fade effects
- */
-
-// Data for your projects
 const PROJECTS = [
   { id: 1, img: 'assets/image1.png', title: 'Project One', link: '#' },
   { id: 2, img: 'assets/image2.png', title: 'Project Two', link: '#' },
@@ -34,14 +24,7 @@ const LOGOS = [
 ];
 
 export const HeroSection: React.FC = () => {
-  const { scrollY } = useScroll();
-  
-  // Parallax and Fade effects for the text content
-  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
-  const scale = useTransform(scrollY, [0, 400], [1, 0.90]);
-  const textY = useTransform(scrollY, [0, 400], [0, 50]);
-
-  // Triple the array to ensure no white space during fast scrolling/resets
+  // Triple the array for infinite scroll
   const infiniteProjects = useMemo(() => [...PROJECTS, ...PROJECTS, ...PROJECTS], []);
 
   return (
@@ -58,9 +41,11 @@ export const HeroSection: React.FC = () => {
         <span className="text-[12px] md:text-sm font-bold tracking-tight text-zinc-800">Available for new projects</span>
       </motion.div>
 
-      {/* --- MAIN CONTENT AREA --- */}
+      {/* --- MAIN CONTENT AREA (Faded on scroll removed) --- */}
       <motion.div 
-        style={{ opacity, scale, y: textY }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
         className="z-10 max-w-4xl text-center space-y-6 px-6"
       >
         <motion.p 
@@ -98,44 +83,38 @@ export const HeroSection: React.FC = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6"
         >
           <a 
-  href="https://cal.com/kael-man/30min" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="w-full sm:w-auto block"
->
-  <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#1A1A1A] text-white px-10 py-5 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl group">
-    <Calendar size={20} className="group-hover:rotate-12 transition-transform" />
-    Book Intro Call
-  </button>
-</a>
+            href="https://cal.com/kael-man/30min" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto block"
+          >
+            <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#1A1A1A] text-white px-10 py-5 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl group">
+              <Calendar size={20} className="group-hover:rotate-12 transition-transform" />
+              Book Intro Call
+            </button>
+          </a>
           <a 
-  href="https://wa.me/917031139797?text=Hi%20Ankan,%20I'm%20interested%20in%20working%20with%20Sandbyte%20Studio!" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="w-full sm:w-auto block"
->
-  <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white border border-black/10 px-10 py-5 rounded-full font-bold hover:bg-zinc-50 active:scale-95 transition-all shadow-sm">
-    <Mail size={20} className="text-[#25D366]" /> {/* Changed icon color to WhatsApp Green */}
-    Send Message
-  </button>
-</a>
+            href="https://wa.me/917031139797?text=Hi%20Ankan,%20I'm%20interested%20in%20working%20with%20Sandbyte%20Studio!" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto block"
+          >
+            <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white border border-black/10 px-10 py-5 rounded-full font-bold hover:bg-zinc-50 active:scale-95 transition-all shadow-sm">
+              <Mail size={20} className="text-[#25D366]" />
+              Send Message
+            </button>
+          </a>
         </motion.div>
       </motion.div>
 
       {/* --- INFINITY LOOP CAROUSEL --- */}
-      {/* MOBILE CHANGES: 
-          1. Aspect ratio adjusted for smaller screens.
-          2. min-width reduced from 350px/550px to 280px on small mobile.
-          3. Gap reduced on mobile.
-          4. Animation speed slightly faster on mobile for energy.
-      */}
       <div className="w-full mt-20 md:mt-24 relative flex items-center group/carousel">
         <motion.div 
           className="flex gap-4 md:gap-6 px-3"
           initial={{ x: "-33.33%" }}
           animate={{ x: "0%" }}
           transition={{ 
-            duration: 25, // Adjusted duration
+            duration: 25, 
             repeat: Infinity, 
             ease: "linear" 
           }}
@@ -154,7 +133,6 @@ export const HeroSection: React.FC = () => {
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1" 
                 loading="lazy"
               />
-              {/* Desktop Hover Overlay */}
               <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <div className="bg-white p-4 rounded-full scale-50 group-hover:scale-100 transition-transform duration-500">
                   <ArrowUpRight className="text-black" size={32} />
@@ -164,7 +142,6 @@ export const HeroSection: React.FC = () => {
           ))}
         </motion.div>
         
-        {/* --- GLASSMORPHISM FADE EDGES --- */}
         <div className="absolute inset-y-0 left-0 w-20 md:w-48 bg-gradient-to-r from-[#F4F4F4] via-[#F4F4F4]/80 to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-20 md:w-48 bg-gradient-to-l from-[#F4F4F4] via-[#F4F4F4]/80 to-transparent z-10 pointer-events-none" />
       </div>
@@ -180,7 +157,6 @@ export const HeroSection: React.FC = () => {
           Trusted by startups and industry leaders worldwide.
         </p>
         
-        {/* Mobile grid: 3 columns | Desktop: flex-wrap center */}
         <div className="grid grid-cols-3 md:flex md:flex-wrap justify-center items-center gap-x-8 md:gap-x-16 gap-y-10 opacity-30 hover:opacity-100 transition-opacity duration-500">
            {LOGOS.map((logo, idx) => (
              <img 
@@ -198,7 +174,6 @@ export const HeroSection: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* --- DECORATIVE ELEMENTS (Mobile Only Refinement) --- */}
       <div className="absolute top-1/4 left-0 w-64 h-64 bg-blue-100/30 blur-[100px] -z-10 rounded-full" />
       <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-zinc-200/50 blur-[100px] -z-10 rounded-full" />
     </section>
