@@ -1,101 +1,192 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Mail, Calendar } from 'lucide-react';
+import { Mail, Calendar, ArrowUpRight } from 'lucide-react';
+
+/**
+ * HERO SECTION COMPONENT
+ * * Features:
+ * 1. Responsive typography (Fluid scaling)
+ * 2. Infinite Marquee (Left-to-Right)
+ * 3. Mobile-optimized card dimensions
+ * 4. Scroll-based parallax and fade effects
+ */
 
 // Data for your projects
 const PROJECTS = [
-  { id: 1, img: 'assets/image1.png', link: 'https://example.com/project-1' },
-  { id: 2, img: 'assets/image2.png', link: 'https://example.com/project-2' },
-  { id: 3, img: 'assets/image3.png', link: 'https://example.com/project-3' },
-  { id: 4, img: '/assets/projects/work-4.jpg', link: 'https://example.com/project-4' },
+  { id: 1, img: 'assets/image1.png', title: 'Project One', link: '#' },
+  { id: 2, img: 'assets/image2.png', title: 'Project Two', link: '#' },
+  { id: 3, img: 'assets/image3.png', title: 'Project Three', link: '#' },
+  { id: 4, img: 'assets/image4.png', title: 'Project Four', link: '#' },
+  { id: 5, img: 'assets/image5.png', title: 'Project Five', link: '#' },
+  { id: 6, img: 'assets/image6.png', title: 'Project Six', link: '#' },
+  { id: 7, img: 'assets/image7.png', title: 'Project Seven', link: '#' },
+  { id: 8, img: 'assets/image8.png', title: 'Project Eight', link: '#' },
+  { id: 9, img: 'assets/image9.png', title: 'Project Nine', link: '#' },
+];
+
+const LOGOS = [
+  { src: 'assets/t1.svg', alt: 'Whop' },
+  { src: 'assets/t2.svg', alt: 'Jupiter' },
+  { src: 'assets/t3.svg', alt: 'SideShift' },
+  { src: 'assets/t4.svg', alt: 'Ostium' },
+  { src: 'assets/t5.svg', alt: 'Listkit' },
+  { src: 'assets/t6.svg', alt: 'Partner' },
 ];
 
 export const HeroSection: React.FC = () => {
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const scale = useTransform(scrollY, [0, 300], [1, 0.95]);
+  
+  // Parallax and Fade effects for the text content
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+  const scale = useTransform(scrollY, [0, 400], [1, 0.90]);
+  const textY = useTransform(scrollY, [0, 400], [0, 50]);
 
-  // To create a seamless infinity loop, we double the array
-  const infiniteProjects = [...PROJECTS, ...PROJECTS];
+  // Triple the array to ensure no white space during fast scrolling/resets
+  const infiniteProjects = useMemo(() => [...PROJECTS, ...PROJECTS, ...PROJECTS], []);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center pt-10 overflow-hidden bg-[#F4F4F4]">
-      {/* Top Floating Badge */}
+    <section className="relative min-h-screen flex flex-col items-center pt-16 md:pt-10 overflow-hidden bg-[#F4F4F4] selection:bg-zinc-900 selection:text-white">
+      
+      {/* --- TOP FLOATING BADGE --- */}
       <motion.div 
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-black/5 mb-12"
+        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+        className="z-20 flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.04)] border border-black/5 mb-8 md:mb-12"
       >
         <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-        <span className="text-sm font-medium">Recent work</span>
+        <span className="text-[12px] md:text-sm font-bold tracking-tight text-zinc-800">Available for new projects</span>
       </motion.div>
 
-      {/* Main Copy */}
+      {/* --- MAIN CONTENT AREA --- */}
       <motion.div 
-        style={{ opacity, scale }}
-        className="max-w-4xl text-center space-y-6 px-6"
+        style={{ opacity, scale, y: textY }}
+        className="z-10 max-w-4xl text-center space-y-6 px-6"
       >
-        <p className="text-zinc-500 font-medium tracking-tight">Helped raise $440M+ in 2025. 70+ completed projects.</p>
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] text-zinc-900">
-          A full-stack design and dev partner for high-growth startups
-        </h1>
-        <p className="text-xl text-zinc-500 max-w-2xl mx-auto">
-          A quality-obsessed design and development partner that moves fast and actually gets things shipped.
-        </p>
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-zinc-500 font-bold text-sm md:text-base tracking-tight"
+        >
+          Helped Raise 50 Lakhs+ in 2025. 47+ Completed Projects
+        </motion.p>
 
-        {/* Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 pt-4">
-          <button className="flex items-center gap-2 bg-[#1A1A1A] text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg">
-            <Calendar size={20} />
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-[40px] md:text-7xl font-bold tracking-tighter leading-[1.1] md:leading-[1.05] text-zinc-900"
+        >
+          A full-stack design and dev partner for <span className="text-zinc-400 italic">high-growth</span> startups
+        </motion.h1>
+
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="text-lg md:text-xl text-zinc-500 max-w-2xl mx-auto leading-relaxed"
+        >
+          A quality-obsessed design and development partner that moves fast and actually gets things shipped.
+        </motion.p>
+
+        {/* --- BUTTON GROUP --- */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6"
+        >
+          <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#1A1A1A] text-white px-10 py-5 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl group">
+            <Calendar size={20} className="group-hover:rotate-12 transition-transform" />
             Book Intro Call
           </button>
-          <button className="flex items-center gap-2 bg-white border border-black/10 px-8 py-4 rounded-full font-semibold hover:bg-zinc-50 transition-colors shadow-sm">
+          <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white border border-black/10 px-10 py-5 rounded-full font-bold hover:bg-zinc-50 active:scale-95 transition-all shadow-sm">
             <Mail size={20} className="text-blue-500" />
             Send Message
           </button>
-        </div>
+        </motion.div>
       </motion.div>
 
-      {/* Infinity Loop Carousel - Left to Right */}
-      <div className="w-full mt-24 relative flex items-center">
+      {/* --- INFINITY LOOP CAROUSEL --- */}
+      {/* MOBILE CHANGES: 
+          1. Aspect ratio adjusted for smaller screens.
+          2. min-width reduced from 350px/550px to 280px on small mobile.
+          3. Gap reduced on mobile.
+          4. Animation speed slightly faster on mobile for energy.
+      */}
+      <div className="w-full mt-20 md:mt-24 relative flex items-center group/carousel">
         <motion.div 
-          className="flex gap-6 px-3"
-          /* Animation Logic:
-             We start at -50% (halfway through the doubled list) 
-             and move to 0% to create a 'Left to Right' motion.
-          */
-          initial={{ x: "-50%" }}
+          className="flex gap-4 md:gap-6 px-3"
+          initial={{ x: "-33.33%" }}
           animate={{ x: "0%" }}
           transition={{ 
-            duration: 30, 
+            duration: 25, // Adjusted duration
             repeat: Infinity, 
             ease: "linear" 
           }}
         >
           {infiniteProjects.map((project, index) => (
-            <a 
+            <motion.a 
               key={`${project.id}-${index}`} 
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block min-w-[350px] md:min-w-[550px] aspect-[16/10] bg-white rounded-[40px] overflow-hidden border border-black/5 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group"
+              className="relative block min-w-[280px] md:min-w-[550px] aspect-[4/3] md:aspect-[16/10] bg-white rounded-[24px] md:rounded-[40px] overflow-hidden border border-black/5 shadow-sm hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 group"
             >
               <img 
                 src={project.img} 
                 alt={`Project ${project.id}`} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1" 
+                loading="lazy"
               />
-            </a>
+              {/* Desktop Hover Overlay */}
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="bg-white p-4 rounded-full scale-50 group-hover:scale-100 transition-transform duration-500">
+                  <ArrowUpRight className="text-black" size={32} />
+                </div>
+              </div>
+            </motion.a>
           ))}
         </motion.div>
         
-        {/* Subtle Side Blurs (Glassmorphism effect) */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#F4F4F4] to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#F4F4F4] to-transparent z-10" />
+        {/* --- GLASSMORPHISM FADE EDGES --- */}
+        <div className="absolute inset-y-0 left-0 w-20 md:w-48 bg-gradient-to-r from-[#F4F4F4] via-[#F4F4F4]/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-20 md:w-48 bg-gradient-to-l from-[#F4F4F4] via-[#F4F4F4]/80 to-transparent z-10 pointer-events-none" />
       </div>
 
-      {/* Logo Cloud Section (Screenshot 1 Bottom) */}
-      
+      {/* --- TRUSTED LOGO SECTION --- */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="mt-24 md:mt-32 w-full max-w-6xl px-6 pb-20"
+      >
+        <p className="text-center font-bold text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-zinc-400 mb-10">
+          Trusted by startups and industry leaders worldwide.
+        </p>
+        
+        {/* Mobile grid: 3 columns | Desktop: flex-wrap center */}
+        <div className="grid grid-cols-3 md:flex md:flex-wrap justify-center items-center gap-x-8 md:gap-x-16 gap-y-10 opacity-30 hover:opacity-100 transition-opacity duration-500">
+           {LOGOS.map((logo, idx) => (
+             <img 
+               key={idx} 
+               src={logo.src} 
+               alt={logo.alt} 
+               className="h-5 md:h-8 w-auto mx-auto object-contain hover:scale-110 transition-transform" 
+             />
+           ))}
+           <div className="col-span-3 md:col-span-1 flex justify-center">
+             <div className="px-5 py-2 rounded-full border border-black/10 text-[10px] md:text-xs font-black tracking-widest bg-white/50 backdrop-blur-sm">
+               30+ MORE
+             </div>
+           </div>
+        </div>
+      </motion.div>
+
+      {/* --- DECORATIVE ELEMENTS (Mobile Only Refinement) --- */}
+      <div className="absolute top-1/4 left-0 w-64 h-64 bg-blue-100/30 blur-[100px] -z-10 rounded-full" />
+      <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-zinc-200/50 blur-[100px] -z-10 rounded-full" />
     </section>
   );
 };
