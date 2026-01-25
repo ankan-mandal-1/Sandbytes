@@ -12,10 +12,30 @@ import { Check, ChevronDown, MessageCircle, Calendar } from 'lucide-react';
  */
 
 const FAQS = [
-  { q: "Do you offer frontend dev?", a: "Yes. Once design is approved, our senior frontend development team takes over and implements everything 1:1 using Next.js or React." },
-  { q: "How fast can we start?", a: "We typically have a 1-2 week lead time. Book a call to check our current availability." },
-  { q: "What is your revision policy?", a: "We offer unlimited revisions within the scope of the project. We work until you are 100% satisfied." },
-  { q: "Do you offer branding?", a: "Yes, we offer full brand identity services including logo design, typography, and brand guidelines." }
+  {
+    q: "Why wouldn't I just hire a full-time designer?",
+    a: "A senior designer now costs over ₹1.5L/month, plus benefits. Aside from the cost, you might not always have enough work to keep them busy. With SandByte, you get studio-quality work at a fraction of the cost, and you can scale your projects as needed without the overhead of a full-time hire."
+  },
+  {
+    q: "How fast will I receive my designs?",
+    a: "Most initial concepts are delivered within 48-72 hours. For full website builds or complex dashboards, we work in rapid 1-week sprints to ensure you always have something tangible to review and iterate on."
+  },
+  {
+    q: "Who actually does the work?",
+    a: "You work directly with the founders and senior leads. We don't outsource your project to juniors or third-party agencies. This ensures the 'pixel-perfect' quality we promise is what you actually get."
+  },
+  {
+    q: "What if I don't like the design?",
+    a: "No worries! We offer unlimited revisions within the scope of your chosen plan. we continue to iterate until you are 100% satisfied with the result. Our goal is to build a product you're proud to show off."
+  },
+  {
+    q: "Do you offer development services too?",
+    a: "Yes! We are a full-stack partner. We specialize in Framer, Next.js, and React development, ensuring that the high-fidelity designs we create are translated into clean, high-performance code."
+  },
+  {
+    q: "Who owns the intellectual property?",
+    a: "You do. Once the final payment is made, all design assets and code belong to you entirely. We provide organized Figma files and GitHub repository access as part of the handoff."
+  }
 ];
 
 export const PricingFAQ = () => {
