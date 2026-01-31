@@ -37,16 +37,19 @@ const Navigation: React.FC<{ isMenuOpen: boolean; setIsMenuOpen: (val: boolean) 
 
   return (
     <>
-      <header className="fixed top-0 w-full z-50 px-4 md:px-6 py-4 md:py-6 pointer-events-none">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+      {/* FIXED: Removed 'pointer-events-none' and added 'bg-[#F4F4F4]' 
+          This creates a solid "shield" that matches your site background.
+      */}
+      <header className="fixed top-0 left-0 right-0 z-50 w-full bg-[#F4F4F4] border-b border-black/5 px-4 md:px-8 shadow-sm">
+        <div className="max-w-7xl mx-auto flex justify-between items-center h-[72px] md:h-[90px]">
           
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="pointer-events-auto shrink-0">
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="shrink-0">
             <Link to="/" className="block">
-              <img src="assets/SANDBYTE-LOGO.png" alt="Logo" className="h-8 md:h-12 w-auto object-contain hover:scale-105 transition-transform" />
+              <img src="assets/SANDBYTE-LOGO.png" alt="Logo" className="h-8 md:h-11 w-auto object-contain hover:scale-105 transition-transform" />
             </Link>
           </motion.div>
           
-          <motion.nav initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="hidden md:flex gap-1 bg-white/80 backdrop-blur-md p-1.5 rounded-full border border-black/5 shadow-sm pointer-events-auto">
+          <motion.nav initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="hidden md:flex gap-1 bg-white p-1.5 rounded-full border border-black/5 shadow-sm">
             {navItems.map((item) => (
               item.href.startsWith('/#') ? (
                 <a key={item.name} href={item.href} className="px-6 py-2.5 rounded-full text-sm font-bold text-zinc-500 hover:text-zinc-900 hover:bg-zinc-50 transition-all">
@@ -60,8 +63,8 @@ const Navigation: React.FC<{ isMenuOpen: boolean; setIsMenuOpen: (val: boolean) 
             ))}
           </motion.nav>
 
-          <div className="flex items-center gap-2 pointer-events-auto">
-            <a href="tel:+917031139797" className="flex items-center justify-center w-11 h-11 bg-white md:bg-[#1A1A1A] text-zinc-900 md:text-white rounded-2xl md:rounded-full md:px-6 md:w-auto shadow-sm md:shadow-lg border border-black/5 md:border-none hover:scale-105 active:scale-95 transition-all">
+          <div className="flex items-center gap-2">
+            <a href="tel:+917031139797" className="flex items-center justify-center w-11 h-11 bg-[#1A1A1A] text-white rounded-2xl md:rounded-full md:px-6 md:w-auto shadow-lg hover:scale-105 active:scale-95 transition-all">
               <Phone size={18} className="md:mr-2" />
               <span className="hidden md:block text-sm font-bold">Call Now</span>
             </a>
@@ -74,7 +77,7 @@ const Navigation: React.FC<{ isMenuOpen: boolean; setIsMenuOpen: (val: boolean) 
 
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="fixed inset-0 z-40 bg-[#F4F4F4] pt-28 px-6 md:hidden flex flex-col justify-between pb-12">
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="fixed inset-0 z-[60] bg-[#F4F4F4] pt-28 px-6 md:hidden flex flex-col justify-between pb-12">
             <nav className="flex flex-col">
               {navItems.map((item, idx) => (
                 <Link key={item.name} to={item.href} onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold tracking-tighter text-zinc-900 py-4 border-b border-black/5 flex justify-between items-end">
@@ -116,11 +119,13 @@ const App: React.FC = () => {
       <ScrollToTop />
       <div className="min-h-screen bg-[#F4F4F4] text-[#1A1A1A] selection:bg-zinc-900 selection:text-white overflow-x-hidden font-sans">
         
-        <motion.div className="fixed top-0 left-0 right-0 h-1 bg-zinc-900 origin-left z-[60]" style={{ scaleX }} />
+        <motion.div className="fixed top-0 left-0 right-0 h-1 bg-zinc-900 origin-left z-[70]" style={{ scaleX }} />
 
         <Navigation isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
-        <main className={`relative transition-all duration-700 ${isMenuOpen ? 'blur-2xl scale-95 opacity-50' : 'blur-0 scale-100 opacity-100'}`}>
+        {/* FIXED: Added 'pt-[80px] md:pt-[100px]' to push main content below the fixed header. 
+        */}
+        <main className={`relative pt-[80px] md:pt-[100px] transition-all duration-700 ${isMenuOpen ? 'blur-2xl scale-95 opacity-50' : 'blur-0 scale-100 opacity-100'}`}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
@@ -132,7 +137,6 @@ const App: React.FC = () => {
           <Footer />
         </main>
 
-        {/* --- GLOBAL BACKGROUND GRADIENTS --- */}
         <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
           <div className="absolute top-[-5%] left-[-10%] w-[80%] h-[40%] bg-blue-100/40 blur-[80px] rounded-full" />
           <div className="absolute bottom-[10%] right-[-10%] w-[80%] h-[40%] bg-zinc-200/60 blur-[80px] rounded-full" />
