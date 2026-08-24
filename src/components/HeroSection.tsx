@@ -94,7 +94,7 @@ export const HeroSection: React.FC = () => {
             </button>
           </a>
           <a 
-            href="https://wa.me/917031139797?text=Hi%20Ankan,%20I'm%20interested%20in%20working%20with%20Sandbyte%20site!" 
+            href="https://wa.me/919477804756?text=Hi%20SandByte,%20I'm%20interested%20in%20working%20with%20you!" 
             target="_blank" 
             rel="noopener noreferrer"
             className="w-full sm:w-auto block"
