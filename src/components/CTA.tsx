@@ -5,7 +5,7 @@ const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', details: '' });
 
-  const phoneNumber = "917031139797"; // Format: CountryCode + Number (no +)
+  const phoneNumber = "919477804756"; // Format: CountryCode + Number (no +)
 
   // Handle Input Changes
   const handleChange = (e) => {
