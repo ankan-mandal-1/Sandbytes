@@ -104,34 +104,7 @@ const SandByteHero: React.FC = () => {
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col">
 
-        {/* Header */}
-        <header className="relative z-20 flex items-center justify-between px-6 sm:px-10 lg:px-16 xl:px-20 py-7">
-
-          {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10">
-              <div className="absolute left-0 top-0 w-7 h-7 rounded-full bg-[#2638ff]" />
-              <div
-                className="absolute right-0 bottom-0 w-7 h-10 rounded-full bg-[#2638ff] rotate-[25deg]"
-              />
-            </div>
-
-            <span className="text-2xl sm:text-3xl font-light tracking-[-0.06em]">
-              Sand<span className="font-normal">Byte</span>
-            </span>
-          </div>
-
-          {/* Header Right */}
-          <div className="hidden sm:flex items-center gap-5 text-[10px] sm:text-xs tracking-[0.18em] text-slate-500 uppercase">
-            <span>
-              Performance Marketing
-              <br />
-              For Growth
-            </span>
-
-            <div className="w-12 h-px bg-slate-400" />
-          </div>
-        </header>
+  
 
 
         {/* Main Hero */}
